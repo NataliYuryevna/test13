@@ -33,7 +33,7 @@
     "path": "@PROJECT_PATH@",
     "versionFirst": "4.8.8",
     "siteFonts": [],
-    "uniqCompNum": 7,
+    "uniqCompNum": 8,
     "versionPublish": "4.8.8",
     "screenshot": "screenshot.png"
   },
@@ -635,6 +635,50 @@
                 "opacity": "@overlayOpacity"
               }
             },
+            ".container": {
+              "margin": "auto"
+            },
+            "& when (@showTitle)": {
+              ".wrapper": {
+                "margin-top": "2rem"
+              }
+            },
+            "& when (@transparentBg)": {
+              "amp-social-share": {
+                "background-color": "transparent"
+              }
+            },
+            "amp-social-share": {
+              "margin": "0 .5rem",
+              "width": "~\"@{iconsSize}px\" !important",
+              "height": "~\"@{iconsSize}px\" !important"
+            }
+          },
+          "_name": "social-share1",
+          "_customHTML": "<section class=\"social-share1\" group=\"Social\" plugins=\"amp-main, amp-social-share\">\n\n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n\n        <input type=\"range\" inline=\"\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"8\" value=\"4\" step=\"1\">\n        <input type=\"range\" inline=\"\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"8\" value=\"4\" step=\"1\">\n        \n        <input type=\"checkbox\" title=\"Show Title\" name=\"showTitle\" checked=\"\">\n        <input type=\"checkbox\" title=\"Email\" name=\"email\" checked=\"\">\n        <input type=\"checkbox\" title=\"Facebook\" name=\"facebook\" checked=\"\">\n        <input type=\"checkbox\" title=\"Google+\" name=\"gplus\" checked=\"\">\n        <input type=\"checkbox\" title=\"Linkedin\" name=\"linkedin\" checked=\"\">\n        <input type=\"checkbox\" title=\"Pinterest\" name=\"pinterest\" checked=\"\">\n        <input type=\"checkbox\" title=\"Tumblr\" name=\"tumblr\" checked=\"\">\n        <input type=\"checkbox\" title=\"Twitter\" name=\"twitter\" checked=\"\">\n        <input type=\"range\" title=\"Icons Size\" name=\"iconsSize\" min=\"48\" max=\"120\" step=\"1\" value=\"60\">\n        <input type=\"checkbox\" title=\"Icons Transparent BG\" name=\"transparentBg\">\n        \n        <fieldset type=\"background\" name=\"bg\">\n            <input type=\"image\" title=\"Background Image\" value=\"../_images/background1.jpg\">\n            <input type=\"color\" title=\"Background Color\" value=\"#ffffff\" selected=\"\">\n        </fieldset>\n\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" checked=\"\" condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#7f7e7e\" condition=\"overlay &amp;&amp; bg.type !== 'color'\">\n        <input type=\"range\" inline=\"\" title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.5\" condition=\"overlay &amp;&amp; bg.type !== 'color'\">\n    <!-- End block parameters -->\n    </mbr-parameters>\n\n    <div class=\"mbr-overlay\" mbr-if=\"overlay &amp;&amp; bg.type !== 'color'\"></div>\n    <div class=\"container\">\n        <h2 class=\"mbr-section-title mbr-fonts-style align-center mbr-bold\" mbr-theme-style=\"display-2\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title, .wrapper\">\n            Share this page\n        </h2>\n        <div class=\"wrapper align-center\">\n            <amp-social-share type=\"email\" mbr-if=\"email\" width=\"{{iconsSize}}\" height=\"{{iconsSize}}\"></amp-social-share>\n            <amp-social-share type=\"facebook\" mbr-if=\"facebook\" data-param-app_id=\"618352995291837\" width=\"{{iconsSize}}\" height=\"{{iconsSize}}\"></amp-social-share>\n            <amp-social-share type=\"gplus\" mbr-if=\"gplus\" width=\"{{iconsSize}}\" height=\"{{iconsSize}}\"></amp-social-share>\n            <amp-social-share type=\"linkedin\" mbr-if=\"linkedin\" width=\"{{iconsSize}}\" height=\"{{iconsSize}}\"></amp-social-share>\n            <amp-social-share type=\"pinterest\" mbr-if=\"pinterest\" width=\"{{iconsSize}}\" height=\"{{iconsSize}}\" data-param-media=\"https://ampbyexample.com/img/amp.jpg\"></amp-social-share>\n            <amp-social-share type=\"tumblr\" mbr-if=\"tumblr\" width=\"{{iconsSize}}\" height=\"{{iconsSize}}\"></amp-social-share>\n            <amp-social-share type=\"twitter\" mbr-if=\"twitter\" width=\"{{iconsSize}}\" height=\"{{iconsSize}}\"></amp-social-share>\n        </div>\n    </div>\n</section>\n",
+          "_cid": "riBhWUfzlr",
+          "_anchor": "social-share1-7",
+          "_PHPplaceholders": [],
+          "_JSplaceholders": [],
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
+        },
+        {
+          "_styles": {
+            "padding-top": "(@paddingTop * 15px)",
+            "padding-bottom": "(@paddingBottom * 15px)",
+            "& when (@bg-type = 'color')": {
+              "background-color": "@bg-value"
+            },
+            "& when (@bg-type = 'image')": {
+              "background-image": "url(@bg-value)",
+              ".mbr-overlay": {
+                "background-color": "@overlayColor",
+                "opacity": "@overlayOpacity"
+              }
+            },
             ".main-row": {
               "& when (@reverseContent)": {
                 "-webkit-flex-direction": "row-reverse",
@@ -919,50 +963,6 @@
           "_customHTML": "<section class=\"footer6 map\" group=\"Footers\" plugins=\"amp-main, amp-iframe\">\n\n    <mbr-parameters>\n        <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <input type=\"range\" inline=\"\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"9\" step=\"1\" value=\"4\">\n        <input type=\"range\" inline=\"\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"9\" step=\"1\" value=\"4\">\n\n        <input type=\"checkbox\" title=\"Show Title\" name=\"showTitle\" checked=\"\">\n        <input type=\"range\" inline=\"\" name=\"listItems\" title=\"List Items\" min=\"0\" max=\"6\" value=\"3\">\n        <input type=\"checkbox\" title=\"Show Marks\" name=\"showIcons\" checked=\"\" condition=\"listItems > 0\">\n        <input type=\"range\" inline=\"\" title=\"Marks Size\" name=\"iconsSize\" min=\"0.2\" max=\"2\" step=\"0.1\" value=\"0.5\" condition=\"showIcons &amp;&amp; listItems > 0\">\n        <input type=\"color\" title=\"Marks Color\" name=\"iconsColor\" value=\"#232323\" condition=\"showIcons &amp;&amp; listItems > 0\">\n        <input type=\"range\" inline=\"\" title=\"Icons Count\" name=\"socialCount\" min=\"0\" max=\"6\" step=\"1\" value=\"3\">\n        <input type=\"color\" title=\"Icons Color\" name=\"socialColor\" value=\"#464646\" condition=\"socialCount > 0\">\n        <input type=\"range\" inline=\"\" title=\"Icons Size\" name=\"socialSize\" min=\"1\" max=\"3\" step=\"0.1\" value=\"2\" condition=\"socialCount > 0\">\n        <input type=\"checkbox\" title=\"Map on Left/Right\" name=\"reverseContent\" checked=\"\">\n        \n        <fieldset type=\"background\" name=\"bg\">\n            <input type=\"color\" title=\"Background Color\" value=\"#ececec\" selected=\"\">\n            <input type=\"image\" title=\"Background Image\" value=\"../_images/background1.jpg\">\n        </fieldset>\n\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\" checked=\"\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#ffffff\" condition=\"overlay &amp;&amp; bg.type !== 'color'\">\n        <input type=\"range\" inline=\"\" title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.6\" condition=\"overlay &amp;&amp; bg.type !== 'color'\">\n        <input type=\"map\" title=\"Map\" name=\"googleMap\">\n        <!-- End block parameters -->\n    </mbr-parameters>\n\n    <div class=\"mbr-overlay\" mbr-if=\"overlay &amp;&amp; bg.type !== 'color'\"></div>\n    <div class=\"container\">\n        <div class=\"mbr-row mbr-justify-content-center main-row\">\n            <div class=\"mbr-col-lg-6 mbr-col-md-12 map-wrap\">\n                <div class=\"google-map\" mbr-map=\"googleMap\"></div>\n                <div class=\"map-placeholder mobirise-loader\">\n                    <div placeholder=\"\" class=\"placeholder\"></div>\n                </div>\n            </div>\n\n            <div class=\"mbr-col-md-12 mbr-col-lg-6\">\n                <div class=\"mbr-row first-row mbr-justify-content-center\">\n                    <div class=\"mbr-col-md-6\">\n                        <h3 class=\"mbr-text mbr-bold mbr-fonts-style group-title\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".group-title\">\n                            Address\n                        </h3>\n                        <p class=\"mbr-text text mbr-fonts-style\" mbr-theme-style=\"display-7\" data-app-selector=\".text\">\n                            1234 Street Name\n                            <br>City, AA 9999\n                        </p>\n                    </div>\n                    <div class=\"mbr-col-md-6\" mbr-if=\"listItems > 0\">\n                        <h3 class=\"mbr-text mbr-bold mbr-fonts-style group-title\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".group-title\">\n                            Links\n                        </h3>\n                        <div class=\"items\" mbr-list=\"\" mbr-list-grow=\"listItems\">\n                            <div class=\"list-item\">\n                                <div class=\"icon-wrap\">\n                                    <span mbr-icon=\"\" class=\"mbr-iconfont fa-stop fa\" mbr-if=\"showIcons\"></span>\n                                </div>\n                                <h5 class=\"mbr-fonts-style\" mbr-theme-style=\"display-7\" data-app-selector=\".list-item\">\n                                    Website builder\n                                </h5>\n                            </div>\n                            <div class=\"list-item\">\n                                <div class=\"icon-wrap\">\n                                    <span mbr-icon=\"\" class=\"mbr-iconfont fa-stop fa\" mbr-if=\"showIcons\"></span>\n                                </div>\n                                <h5 class=\"mbr-fonts-style\" mbr-theme-style=\"display-7\" data-app-selector=\".list-item\">\n                                    Download for Windows\n                                </h5>\n                            </div>\n                            <div class=\"list-item\">\n                                <div class=\"icon-wrap\">\n                                    <span mbr-icon=\"\" class=\"mbr-iconfont fa-stop fa\" mbr-if=\"showIcons\"></span>\n                                </div>\n                                <h5 class=\"mbr-fonts-style\" mbr-theme-style=\"display-7\" data-app-selector=\".list-item\">\n                                    Download for Mac\n                                </h5>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"mbr-row second-row mbr-justify-content-center\">\n                    <div class=\"mbr-col-md-6\">\n                        <h3 class=\"mbr-text mbr-bold mbr-fonts-style group-title\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".group-title\">\n                            Contacts\n                        </h3>\n                        <p class=\"mbr-text text mbr-fonts-style\" mbr-theme-style=\"display-7\" data-app-selector=\".text\">\n                            Email: support@mobirise.com\n                            <br>Phone: +1 (0) 000 0000 001\n                            <br>Fax: +1 (0) 000 0000 002\n                        </p>\n                    </div>\n                    <div class=\"mbr-col-md-6\" mbr-if=\"socialCount > 0\">\n                        <h3 class=\"mbr-text mbr-bold mbr-fonts-style group-title\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle &amp;&amp; socialCount > 0\" data-app-selector=\".group-title, .icons-list\">\n                            Follow Us\n                        </h3>\n                        <div class=\"icons-list\" mbr-list=\"\" mbr-list-grow=\"socialCount\">\n                            <a href=\"http://www.youtube.com/channel/UCt_tncVAetpK5JeM8L-8jyw\" target=\"_blank\" class=\"icon-wrap\">\n                                <span mbr-icon=\"\" class=\"amp-iconfont amp-iconfont-social fa-youtube fa\"></span>\n                            </a>\n                            <a href=\"https://www.facebook.com/pages/Mobirise/1616226671953247\" target=\"_blank\" class=\"icon-wrap\">\n                                <span mbr-icon=\"\" class=\"amp-iconfont amp-iconfont-social fa-facebook-square fa\"></span>\n                            </a>\n                            <a href=\"https://www.twitter.com/mobirise\" target=\"_blank\" class=\"icon-wrap\">\n                                <span mbr-icon=\"\" class=\"amp-iconfont amp-iconfont-social fa-twitter fa\"></span>\n                            </a>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
           "_cid": "rix9JbcV9d",
           "_anchor": "footer6-1",
-          "_protectedParams": [],
-          "_global": false,
-          "_once": false,
-          "_params": {}
-        },
-        {
-          "_styles": {
-            "padding-top": "(@paddingTop * 15px)",
-            "padding-bottom": "(@paddingBottom * 15px)",
-            "& when (@bg-type = 'color')": {
-              "background-color": "@bg-value"
-            },
-            "& when (@bg-type = 'image')": {
-              "background-image": "url(@bg-value)",
-              ".mbr-overlay": {
-                "background-color": "@overlayColor",
-                "opacity": "@overlayOpacity"
-              }
-            },
-            ".container": {
-              "margin": "auto"
-            },
-            "& when (@showTitle)": {
-              ".wrapper": {
-                "margin-top": "2rem"
-              }
-            },
-            "& when (@transparentBg)": {
-              "amp-social-share": {
-                "background-color": "transparent"
-              }
-            },
-            "amp-social-share": {
-              "margin": "0 .5rem",
-              "width": "~\"@{iconsSize}px\" !important",
-              "height": "~\"@{iconsSize}px\" !important"
-            }
-          },
-          "_name": "social-share1",
-          "_customHTML": "<section class=\"social-share1\" group=\"Social\" plugins=\"amp-main, amp-social-share\">\n\n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n\n        <input type=\"range\" inline=\"\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"8\" value=\"4\" step=\"1\">\n        <input type=\"range\" inline=\"\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"8\" value=\"4\" step=\"1\">\n        \n        <input type=\"checkbox\" title=\"Show Title\" name=\"showTitle\" checked=\"\">\n        <input type=\"checkbox\" title=\"Email\" name=\"email\" checked=\"\">\n        <input type=\"checkbox\" title=\"Facebook\" name=\"facebook\" checked=\"\">\n        <input type=\"checkbox\" title=\"Google+\" name=\"gplus\" checked=\"\">\n        <input type=\"checkbox\" title=\"Linkedin\" name=\"linkedin\" checked=\"\">\n        <input type=\"checkbox\" title=\"Pinterest\" name=\"pinterest\" checked=\"\">\n        <input type=\"checkbox\" title=\"Tumblr\" name=\"tumblr\" checked=\"\">\n        <input type=\"checkbox\" title=\"Twitter\" name=\"twitter\" checked=\"\">\n        <input type=\"range\" title=\"Icons Size\" name=\"iconsSize\" min=\"48\" max=\"120\" step=\"1\" value=\"60\">\n        <input type=\"checkbox\" title=\"Icons Transparent BG\" name=\"transparentBg\">\n        \n        <fieldset type=\"background\" name=\"bg\">\n            <input type=\"image\" title=\"Background Image\" value=\"../_images/background1.jpg\">\n            <input type=\"color\" title=\"Background Color\" value=\"#ffffff\" selected=\"\">\n        </fieldset>\n\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" checked=\"\" condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#7f7e7e\" condition=\"overlay &amp;&amp; bg.type !== 'color'\">\n        <input type=\"range\" inline=\"\" title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.5\" condition=\"overlay &amp;&amp; bg.type !== 'color'\">\n    <!-- End block parameters -->\n    </mbr-parameters>\n\n    <div class=\"mbr-overlay\" mbr-if=\"overlay &amp;&amp; bg.type !== 'color'\"></div>\n    <div class=\"container\">\n        <h2 class=\"mbr-section-title mbr-fonts-style align-center mbr-bold\" mbr-theme-style=\"display-2\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title, .wrapper\">\n            Share this page\n        </h2>\n        <div class=\"wrapper align-center\">\n            <amp-social-share type=\"email\" mbr-if=\"email\" width=\"{{iconsSize}}\" height=\"{{iconsSize}}\"></amp-social-share>\n            <amp-social-share type=\"facebook\" mbr-if=\"facebook\" data-param-app_id=\"145634995501895\" width=\"{{iconsSize}}\" height=\"{{iconsSize}}\"></amp-social-share>\n            <amp-social-share type=\"gplus\" mbr-if=\"gplus\" width=\"{{iconsSize}}\" height=\"{{iconsSize}}\"></amp-social-share>\n            <amp-social-share type=\"linkedin\" mbr-if=\"linkedin\" width=\"{{iconsSize}}\" height=\"{{iconsSize}}\"></amp-social-share>\n            <amp-social-share type=\"pinterest\" mbr-if=\"pinterest\" width=\"{{iconsSize}}\" height=\"{{iconsSize}}\" data-param-media=\"https://ampbyexample.com/img/amp.jpg\"></amp-social-share>\n            <amp-social-share type=\"tumblr\" mbr-if=\"tumblr\" width=\"{{iconsSize}}\" height=\"{{iconsSize}}\"></amp-social-share>\n            <amp-social-share type=\"twitter\" mbr-if=\"twitter\" width=\"{{iconsSize}}\" height=\"{{iconsSize}}\"></amp-social-share>\n        </div>\n    </div>\n</section>\n",
-          "_cid": "rixgbeHqY3",
-          "_anchor": "social-share1-6",
-          "_PHPplaceholders": [],
-          "_JSplaceholders": [],
           "_protectedParams": [],
           "_global": false,
           "_once": false,
