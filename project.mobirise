@@ -33,7 +33,7 @@
     "siteFonts": [],
     "favicon": "",
     "noImageResize": "",
-    "google-analytics": "<amp-analytics config=\"https://www.googletagmanager.com/amp.json?id=GTM-XXXXXXX>m.url=SOURCE_URL\"; data-credentials=\"include\"></amp-analytics>",
+    "google-analytics": "<amp-analytics config=\"https://www.googletagmanager.com/amp.json?id=GTM-XXXXXXX>m.url=SOURCE_URL\" data-credentials=\"include\"></amp-analytics>",
     "сanonical-url": "",
     "uniqCompNum": 3,
     "versionPublish": "4.9.4"
